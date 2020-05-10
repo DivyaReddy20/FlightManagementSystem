@@ -1,0 +1,48 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm"></div>
+    <br><br>
+    <div class="col-sm">
+    <h3>Find booking</h3>
+    <form #userForm="ngForm">
+        <div class="form-group">
+            <label>Enter booking id : </label>
+            <input required type="number" #userIdRef='ngModel' name="bookingId" [(ngModel)]="bookingId" ngModel class="form-control">
+            <br>
+             <div *ngIf='userIdRef.errors && userIdRef.touched' class="alert alert-danger">
+
+          <div [hidden]='!userIdRef.errors.required'> Provide booking Id </div>
+    
+          <div *ngIf='userIdRef.errors.pattern'>Booking Id should be in digits only</div>
+    
+      </div>
+            <input [disabled]="userForm.invalid" type="submit" value="Find" class="btn btn-success" (click)="fetch()"></div>
+  </form> 
+    
+    <table class="table" *ngIf="status">
+
+        <thead>
+
+            <tr>
+                <th>BookingId</th>
+                <th>UserID</th>
+                <th>UserName</th>
+                <th>NumberOFseats</th>   
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{account.bookingId}}</td>
+                <td>{{account.userId}}</td>
+                <td>{{account.passengerName}}</td>
+                <td>{{account.noofSeats}}</td> 
+             </tr>
+        <input type="submit" value="modify" class="btn btn-success" (click)="update()">
+    </tbody>
+    </table> 
+    </div>
+
+    <div class="col-sm"></div>
+</div>  
+</div>

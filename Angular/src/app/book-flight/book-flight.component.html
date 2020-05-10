@@ -1,0 +1,37 @@
+<div class="container">
+  
+     
+     
+    <table class="table table-striped w-auto">
+        <thead>
+     <tr>
+      
+         <th>Flight_Number</th><br>
+         <br><th>Seat Capacity</th><br>
+         <br><th>Source</th><br>
+         <br><th>Destination</th><br>
+         <br><th>Date</th><br>
+         <br><th>Ticket_Cost</th><br>
+         <th></th>
+     </tr>
+ </thead>
+        
+     <tbody>
+        
+        
+            <tr *ngFor = "let flight of flights">
+            <td> {{flight.flightNumber}} </td><br>
+           <br><td> {{flight.seatCapacity}} </td><br>
+           <br><td> {{flight.from_loc}} </td><br>
+           <br><td> {{flight.to_loc}} </td><br>
+           <br><td> {{flight.date1}} </td><br>
+           <br><td> {{flight.ticketCostPerSeat}} </td><br>
+           <br><td> <button class="btn btn-success" (click)="bookings()">BOOK NOW</button> </td><br>
+
+        </tr>
+          
+    </tbody>
+    </table>
+    </div>
+    
+

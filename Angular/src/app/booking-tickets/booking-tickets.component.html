@@ -1,0 +1,46 @@
+
+<h2 class="text-center b">Fill Booking Details</h2>
+  <div class="row justify-content-center align-items-center h-100 a">
+    
+    <form #userForm="ngForm">
+    <div class="form-group md-form form-lg ">
+      <label for="passengerName">Passenger Name</label>
+      <input  required type="text" #userNameRef='ngModel' pattern = "^[a-z0-9_-]{4,15}$" placeholder="EnterName" [(ngModel)]="user.passengerName" name="passengerName" required ngModel class="form-control "id="passengerName">
+      <span ng-show="ngForm.passengerName.$touched && myForm.myName.$invalid"></span>
+      <div *ngIf='userNameRef.errors && userNameRef.touched' class="alert alert-danger">
+
+        <div [hidden]='!userNameRef.errors.required'> Enter Passenger Name </div>
+        <div *ngIf='userNameRef.errors.pattern'> Please Enter The Name properly</div>
+  
+    </div>
+    </div>
+      <div class="form-group">
+      <label for="userId">UserId:</label>
+      <input required type="text" #userIdRef='ngModel'[(ngModel)]="user.userId"  placeholder="Enterid" name="userId" ngModel class="form-control" id="userId" >
+      <div *ngIf='userIdRef.errors && userIdRef.touched' class="alert alert-danger">
+
+        <div [hidden]='!userIdRef.errors.required'> enter user id </div>
+  
+    </div>
+      </div>
+    
+    <div class="form-group">
+      <label for="noofSeats">Number of Seats</label>
+      <input  required [(ngModel)]="user.noofSeats" #seatsRef='ngModel' placeholder="noofSeats" name="noofSeats" pattern="[0-4]" ngModel  class="form-control" id="noofSeats">
+      <div *ngIf='seatsRef.errors && seatsRef.touched' class="alert alert-danger">
+
+        <div [hidden]='!seatsRef.errors.required'> enter no .of seats </div>
+  
+        <div *ngIf='seatsRef.errors.pattern'>should select only 4 seats at a time</div>
+  
+    </div>
+    </div>
+  
+    <button [disabled]="userForm.invalid" class="btn btn-success" (click)="bookNow()">Confirm Booking</button>
+  </form>
+</div>
+<div class=" row justify-content-center align-items-center">
+ 
+ </div>
+ 
+

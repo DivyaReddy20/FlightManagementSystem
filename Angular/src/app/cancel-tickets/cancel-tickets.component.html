@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm"></div>
+
+<div class="form-group md-form form-lg ">
+ 
+    <h2 class="text-center">Cancel Booking</h2>
+    <form #userForm="ngForm">
+      <div class="form-group">
+        <div class="col-sm">
+        <label for="bookingId">BookingId:</label>
+        <input required type="number" #bookIdRef='ngModel' [(ngModel)]="user.bookingId" placeholder="bookingId" name="bookingId" ngModel class="form-control" id="bookingId">
+        <br>
+        <div *ngIf='bookIdRef.errors && bookIdRef.touched' class="alert alert-danger">
+
+          <div [hidden]='!bookIdRef.errors.required'> Provide booking Id </div>
+    
+          <div *ngIf='bookIdRef.errors.pattern'>Booking Id should be in digits only</div>
+    
+      </div>
+      <br><button [disabled]="userForm.invalid" class="btn btn-danger" (click)="delete(user)"> Delete </button>
+    
+      </div>
+      
+      </div>
+     
+    </form>
+
+  </div>
+  <div class="col-sm"></div>
+  
+    </div>
+  </div>
+
+    
