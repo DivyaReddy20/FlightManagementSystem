@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cap.dto.BookingDetails;
 import com.cap.dto.Flight;
+import com.cap.exceptions.IdNotFoundException;
 import com.cap.service.BookFlightService;
 
 @RestController

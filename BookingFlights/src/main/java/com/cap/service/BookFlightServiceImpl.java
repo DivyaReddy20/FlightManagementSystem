@@ -39,18 +39,15 @@ public class BookFlightServiceImpl implements BookFlightService{
 	    }
 
     @Override
-  public void updateBookingDetails(BookingDetails booking)
+     public void updateBookingDetails(BookingDetails booking)
    {
 	 bookingdao.delete(booking);
      bookingdao.save(booking);
 	}
 
 	@Override
-	public BookingDetails displayOneBookingList(Integer bookingId) throws IdNotFoundException{
+	public BookingDetails displayOneBookingList(Integer bookingId) {
 		BookingDetails list= bookingdao.findOne(bookingId);
-		if(list==null)
-			throw new IdNotFoundException("Enter The correct booking Id");
-		else
 		return list;
 	}
 	@Override
