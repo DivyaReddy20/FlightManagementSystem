@@ -12,6 +12,7 @@ export class ViewBookingComponent implements OnInit {
 bookingId:number;
 account:any=[];
 status:boolean;
+msg:string;
   constructor(private service:FlightService ,private router:Router) { }
 
   ngOnInit(): void {
@@ -19,14 +20,13 @@ status:boolean;
   fetch(){
     this.status=true;
     let resp=this.service.showBooking(this.bookingId);
-    resp.subscribe((data)=>this.account=data);
+    resp.subscribe(data =>this.account=data);
     console.log(this.account);
-    if(this.account==null){
-    this.status=false;
-    alert("The Entered Id is not present in the booking details!!!!");
+    err=>{
+      console.log("exception occured");
+      this.msg="Please enter valid BookingId";
     }
-    else
-    this.status=true;
+  
 }
 update()
 {

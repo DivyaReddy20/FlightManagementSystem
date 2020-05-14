@@ -11,6 +11,7 @@ export class CancelTicketsComponent implements OnInit {
 result:string;
 bookingId:number;
 status:boolean;
+msg:string;
 user: addBookingDetails = new addBookingDetails(0,0,"",0);
 addBookingDetail:addBookingDetails[];
   constructor(private service:FlightService ,private router:Router) { }
@@ -24,7 +25,12 @@ addBookingDetail:addBookingDetails[];
     this.service.getUser(user.bookingId)
       .subscribe( data => {
         alert("cancelled ur booking successfully.");
-      });
+      },
+      err=>{
+        console.log("exception occured");
+        this.msg="Please enter valid bookingId";
+      })
+
   
   }
 }

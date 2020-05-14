@@ -5,6 +5,8 @@
     <br><br>
     <div class="col-sm">
     <h3>Find booking</h3>
+    <div class="card border-secondary">
+        <div class="card-body">
     <form #userForm="ngForm">
         <div class="form-group">
             <label>Enter booking id : </label>
@@ -19,8 +21,9 @@
       </div>
             <input [disabled]="userForm.invalid" type="submit" value="Find" class="btn btn-success" (click)="fetch()"></div>
   </form> 
-    
-    <table class="table" *ngIf="status">
+ </div>
+</div>
+ <table class="table" *ngIf="status">
 
         <thead>
 
@@ -38,7 +41,7 @@
                 <td>{{account.passengerName}}</td>
                 <td>{{account.noofSeats}}</td> 
              </tr>
-        <input type="submit" value="modify" class="btn btn-success" (click)="update()">
+        <input type="submit"  value="modify" class="btn btn-success" (click)="update()">
     </tbody>
     </table> 
     </div>
@@ -46,3 +49,5 @@
     <div class="col-sm"></div>
 </div>  
 </div>
+<h1>{{msg}}</h1>
+

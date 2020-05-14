@@ -1,14 +1,15 @@
 
-<h2 class="text-center b">Fill Booking Details</h2>
+<h2 class="text-center b">Fill Booking Details</h2><br>
   <div class="row justify-content-center align-items-center h-100 a">
-    
+    <div class="card border-secondary">
+      <div class="card-body">
     <form #userForm="ngForm">
     <div class="form-group md-form form-lg ">
+     
       <label for="passengerName">Passenger Name</label>
       <input  required type="text" #userNameRef='ngModel' pattern = "^[a-z0-9_-]{4,15}$" placeholder="EnterName" [(ngModel)]="user.passengerName" name="passengerName" required ngModel class="form-control "id="passengerName">
       <span ng-show="ngForm.passengerName.$touched && myForm.myName.$invalid"></span>
       <div *ngIf='userNameRef.errors && userNameRef.touched' class="alert alert-danger">
-
         <div [hidden]='!userNameRef.errors.required'> Enter Passenger Name </div>
         <div *ngIf='userNameRef.errors.pattern'> Please Enter The Name properly</div>
   
@@ -36,8 +37,11 @@
     </div>
     </div>
   
-    <button [disabled]="userForm.invalid" class="btn btn-success" (click)="bookNow()">Confirm Booking</button>
+    <button [disabled]="userForm.invalid" class="btn btn-success" (click)="bookNow()">Confirm</button>
+ 
   </form>
+</div>
+</div>
 </div>
 <div class=" row justify-content-center align-items-center">
  

@@ -1,0 +1,76 @@
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card border-secondary">
+                    <div class="card-body">
+        <form (ngSubmit)="f.form.valid && onSubmit(f.value)" #f="ngForm" >
+        <!-- <div class="form-group md-form form-lg "> -->
+            <div class="form-group">
+               
+                <br>
+                    <label for="fromloc"><span class="req">* </span>Source</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <select type="text" id="ss" name="fromloc" placeholder="Enter source"ngModel>
+                 <option value="Hyderabad">Hyderabad</option>
+                 <option value="Mumbai">Mumbai</option>
+                 <option value="Delhi">Delhi</option>
+                 </select>
+                </div>
+                <div class="form-group">
+                    <label for="toloc"><span class="req">* </span>Destination</label>&nbsp;&nbsp;&nbsp;
+                  <select type="text" id="ss"name="toloc" placeholder="Enter Destination"ngModel>
+                    <option value="Chennai">Chennai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date1"><span class="req">* </span>Date</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="date" id="ss" name="date1" ngModel>
+                 </div>
+                    <button class="btn btn-success" [disabled]="f.invalid" >Search</button>
+        <!-- </div> -->
+        </form>
+        </div>
+        </div>
+        </div>
+        </div>
+        <h2>{{result}}</h2>
+        <h2 class="text-danger" *ngIf="error">{{message}}</h2>
+            <table class="table table-striped container" *ngIf="searchs && searchs.length>0">
+            <thead>
+                <tr>
+                    <th>Flightnumber</th>
+                    <th>Flightname</th>
+                    <th>Fromlocation</th>
+                    <th>Tolocation</th>
+                    <th>Seat</th>
+                    <th>Cost</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let s of searchs">
+                    <td>{{s[0]}}</td>
+                    <td>{{s[1]}}</td>
+                    <td>{{s[2]}}</td>
+                    <td>{{s[3]}}</td>
+                    <td>{{s[4]}}</td>
+                    <td>{{s[5]}}</td>
+                    <td>{{s[6]}}</td>
+                    <br><td> <button class="btn btn-success" (click)="bookings()">BOOK NOW</button> </td><br>
+
+                </tr>
+            </tbody>
+        </table>
+</div>
+<div *ngIf="status">
+        <h4 *ngIf="searchs.length < 1" align="center">No Flights Found</h4>
+    </div>
+</body>

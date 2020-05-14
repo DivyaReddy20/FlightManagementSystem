@@ -1,0 +1,88 @@
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center mb-5"> Schedule Flight</h2>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="card border-secondary">
+                        <div class="card-body">
+
+  <form #userForm="ngForm" (ngSubmit)='userForm.form.valid && onSubmit()'  >  
+  <div class="form-group">
+    <label for="flightNumber">Flight Number:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" [(ngModel)]="scheduling.flightNumber" placeholder="Enter flightNumber" name="flightNumber" id="hh"  #flightNumber="ngModel" pattern="[0-9]{4,9}" required>
+    
+    <div *ngIf='flightNumber.errors && flightNumber.touched' class="alert alert-danger">
+
+      <div [hidden]='!flightNumber.errors.required'> Provide flight Number </div>
+
+      <div *ngIf='flightNumber.errors.pattern'>flight number will be minimum 4 digits</div>
+
+  </div>
+  
+  
+  </div>
+  <div class="form-group md-form form-lg ">
+    <label for="scheduleId">Schedule Id</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" [(ngModel)]="scheduling.schedule.scheduleId" placeholder="Enter id" name="scheduleId" id="hh" #scheduleId="ngModel" pattern="[0-9]{2,4}" required>
+ 
+    <div *ngIf='scheduleId.errors && scheduleId.touched' class="alert alert-danger">
+
+      <div [hidden]='!scheduleId.errors.required'> schedule id schould Provide </div>
+
+      <div *ngIf='scheduleId.errors.pattern'>schedule id will be minimum 2 digits</div>
+
+  </div>
+  
+  </div>
+  
+  <div class="form-group">
+    <label for="sourceAirport">Source Airport</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input [(ngModel)]="scheduling.schedule.sourceAirport" placeholder="Enter Source" name="sourceAirport" id="hh"  #sourceAirport="ngModel" pattern="[A-Za-z ]{1,32}" required>
+    <div *ngIf='sourceAirport.errors&& sourceAirport.touched' class="alert alert-danger">
+
+<div [hidden]='!sourceAirport.errors.required'>  Provide airport name</div>
+
+<div *ngIf='sourceAirport.errors.pattern'>name should be characters</div>
+
+</div>
+
+  </div>
+  <div class="form-group">
+    <label for="destinationAirport">Destination Airport</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input [(ngModel)]="scheduling.schedule.destinationAirport" placeholder="Enter Destination" name="destinationAirport" id="hh" #destinationAirport="ngModel" pattern="[A-Za-z ]{1,32}" required>
+  
+    <div *ngIf='destinationAirport.errors&& destinationAirport.touched' class="alert alert-danger">
+
+      <div [hidden]='!destinationAirport.errors.required'>  Provide airport name</div>
+      
+      <div *ngIf='destinationAirport.errors.pattern'>name should be characters</div>
+      
+      </div>
+
+  </div>
+  <div class="form-group">
+    <label for="arrivalDate"> Arrival Date</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input  type="datetime-local" [(ngModel)]="scheduling.schedule.arrivalDate" name="arrivalDate" id="hh" required>
+  </div>
+  <div class="form-group">
+    <label for="departureDate"> Departure Date</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input  type="datetime-local" [(ngModel)]="scheduling.schedule.departureDate" name="departureDate" id="hh" required>
+  </div>
+  <div class="form-group">
+  <button class="btn btn-success float-right" [disabled]="userForm.invalid"> Schedule Flight</button> 
+  </div>
+</form>
+</div>
+</div>
+</div>
+</div>
+        </div>
+    </div>
+  </div>
+    <div class=" row justify-content-center align-items-center">
+
+  <h4><p class="font-weight-bolder b"> {{result}}</p></h4>
+ 
+ </div>

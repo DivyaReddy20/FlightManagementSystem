@@ -9,6 +9,10 @@ import { FlightService } from './flight.service';
 import { BookingTicketsComponent } from './booking-tickets/booking-tickets.component';
 import { CancelTicketsComponent } from './cancel-tickets/cancel-tickets.component';
 import { ViewBookingComponent } from './view-booking/view-booking.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { SearchflightComponent } from './searchflight/searchflight.component';
+import { AddflightsComponent } from './addflights/addflights.component';
+import { ScheduleflightsComponent } from './scheduleflights/scheduleflights.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { ViewBookingComponent } from './view-booking/view-booking.component';
     BookFlightComponent,
     BookingTicketsComponent,
     CancelTicketsComponent,
-    ViewBookingComponent
+    ViewBookingComponent,
+    RegistrationComponent,
+    SearchflightComponent,
+    AddflightsComponent,
+    ScheduleflightsComponent
   ],
   imports: [
     BrowserModule,
