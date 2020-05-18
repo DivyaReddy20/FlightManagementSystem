@@ -5,14 +5,18 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "Flightsdata")
 public class Flight implements Serializable {
 	@Id
-	private Integer flightNumber;
+    @GeneratedValue
+	private Integer scheduledflightId;
+	private int flightNumber;
 	@Column(length=10)
 	private String carrierName;
 	@Column(length=10)
@@ -44,6 +48,15 @@ public class Flight implements Serializable {
 		this.carrierName = carrierName;
 	}
 
+	public Integer getScheduledFlightId() {
+		return scheduledflightId;
+	}
+
+
+	public void setScheduledFlightId(Integer scheduledflightId) {
+		this.scheduledflightId = scheduledflightId;
+	}
+
 	public String getFlightModel() {
 		return flightModel;
 	}
@@ -59,6 +72,20 @@ public class Flight implements Serializable {
 	public void setSeatCapacity(int seatCapacity) {
 		this.seatCapacity = seatCapacity;
 	}
+
+	
+
+	public Integer getScheduledflightId() {
+		return scheduledflightId;
+	}
+
+	public void setScheduledflightId(Integer scheduledflightId) {
+		this.scheduledflightId = scheduledflightId;
+	}
+
+	
+
+	
 
 	public String getFrom_loc() {
 		return from_loc;
@@ -92,21 +119,33 @@ public class Flight implements Serializable {
 		this.date1 = date1;
 	}
 
-	public Flight(Integer flightNumber, String carrierName, String flightModel, int seatCapacity, String from_loc,
-			String to_loc, int ticketCostPerSeat, Date date1) {
+	
+	public Flight(Integer scheduledflightId, Integer flightNumber, String carrierName, String flightModel,
+			int seatCapacity, String from_loc, String to_loc, Date date1, int ticketCostPerSeat) {
 		super();
+		this.scheduledflightId = scheduledflightId;
 		this.flightNumber = flightNumber;
 		this.carrierName = carrierName;
 		this.flightModel = flightModel;
 		this.seatCapacity = seatCapacity;
 		this.from_loc = from_loc;
 		this.to_loc = to_loc;
-		this.ticketCostPerSeat = ticketCostPerSeat;
 		this.date1 = date1;
+		this.ticketCostPerSeat = ticketCostPerSeat;
 	}
 
 	public Flight() {
-
+		
 	}
+
+
+	@Override
+	public String toString() {
+		return "Flight [scheduledflightId=" + scheduledflightId + ", flightNumber=" + flightNumber + ", carrierName="
+				+ carrierName + ", flightModel=" + flightModel + ", seatCapacity=" + seatCapacity + ", from_loc="
+				+ from_loc + ", to_loc=" + to_loc + ", date1=" + date1 + ", ticketCostPerSeat=" + ticketCostPerSeat
+				+ "]";
+	}
+
 
 }

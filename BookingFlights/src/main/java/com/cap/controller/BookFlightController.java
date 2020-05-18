@@ -39,8 +39,11 @@ public class BookFlightController {
 
 	@PostMapping(value = "/addBooking")
 	public BookingDetails addBookingDetails(@RequestBody() BookingDetails booking) {
+		System.out.println(booking);
 		flightService.addBookingDetails(booking);
-		return flightService.displayOneBookingList(booking.getBookingId());
+		System.out.println(booking.getUserId());
+		System.out.println(flightService.displayOneBookingList(booking.getUserId()));
+		return flightService.displayOneBookingList(booking.getUserId());
 	
 	}
 

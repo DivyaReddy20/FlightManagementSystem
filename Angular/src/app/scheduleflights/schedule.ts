@@ -3,7 +3,6 @@ export interface ScheduleFlight{
     scheduleFlightId:number
     schedule:Schedule
 }    
-
 export interface Schedule{
     scheduleId:number
     sourceAirport:String
@@ -11,5 +10,4 @@ export interface Schedule{
     arrivalDate:String
     departureDate:String
     
-
 }

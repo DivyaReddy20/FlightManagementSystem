@@ -1,8 +1,8 @@
 package com.cap.service;
 
 
-import java.sql.Date;
 import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +49,8 @@ public class BookFlightServiceImpl implements BookFlightService{
 	}
 
 	@Override
-	public BookingDetails displayOneBookingList(Integer bookingId) {
-		BookingDetails list= bookingdao.findOne(bookingId);
+	public BookingDetails displayOneBookingList(int userId) {
+		BookingDetails list= bookingdao.displayOneBookingList(userId);
 		return list;
 	}
 

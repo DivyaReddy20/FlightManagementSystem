@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 //import javax.persistence.OneToOne;
 import javax.persistence.Table;
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "bookinglist")
 public class BookingDetails implements Serializable{
@@ -23,9 +24,18 @@ public class BookingDetails implements Serializable{
 	private int noofSeats;
 	@Column(length=10)
 	private String passengerName;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "flight_Id")
+	private Flight flight;
 	
 	public Integer getBookingId() {
 		return bookingId;
+	}
+	public Flight getFlight() {
+		return flight;
+	}
+	public void setFlight(Flight flight) {
+		this.flight = flight;
 	}
 	public void setBookingId(Integer bookingId) {
 		this.bookingId = bookingId;
@@ -61,6 +71,11 @@ public class BookingDetails implements Serializable{
 		this.userId = userId;
 		this.noofSeats = noofSeats;
 		this.passengerName = passengerName;
+	}
+	@Override
+	public String toString() {
+		return "BookingDetails [bookingId=" + bookingId + ", userId=" + userId + ", noofSeats=" + noofSeats
+				+ ", passengerName=" + passengerName + ", flight=" + flight + "]";
 	}
 	
 	

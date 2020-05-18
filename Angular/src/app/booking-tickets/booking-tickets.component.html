@@ -1,50 +1,92 @@
+<div class="col-md-6 offset-3">
+  <br><br>
+  <h6 style="text-align:center;"> Select blala</h6>
+  <br>
+  <table class="table table-hover  table-bordered" *ngIf="flights != null  else elseBlock">
+    <thead class="thead-light">
+      <tr>
+        <th scope='col'>Flight_Number</th>
+        <th scope='col'>Seat Capacity</th>
+        <th scope='col'>Source</th>
+        <th scope='col'>Destination</th>
+        <th scope='col'>Date</th>
+        <th scope='col'>Ticket_Cost</th>
+        <th scope='col'>Select</th>
+      </tr>
+    </thead> 
+    <tbody>
+      <tr *ngFor="let flight of flights">
+        <td> {{flight.flightNumber}} </td>
+        <td> {{flight.seatCapacity}} </td>
+        <td> {{flight.from_loc}} </td>
+        <td> {{flight.to_loc}} </td>
+        <td> {{flight.date1}} </td>
+        <td> {{flight.ticketCostPerSeat}} </td>
+        <td>
+          <button class="btn btn-large btn-block btn-primary" (click)="list(flight)"> Select </button>
+        </td>
+      </tr>
+  </table>
+  <ng-template #elseBlock>
+    <h4> No flights available right now, check in later! </h4>
+  </ng-template>
 
-<h2 class="text-center b">Fill Booking Details</h2><br>
-  <div class="row justify-content-center align-items-center h-100 a">
-    <div class="card border-secondary">
-      <div class="card-body">
-    <form #userForm="ngForm">
-    <div class="form-group md-form form-lg ">
-     
-      <label for="passengerName">Passenger Name</label>
-      <input  required type="text" #userNameRef='ngModel' pattern = "^[a-z0-9_-]{4,15}$" placeholder="EnterName" [(ngModel)]="user.passengerName" name="passengerName" required ngModel class="form-control "id="passengerName">
-      <span ng-show="ngForm.passengerName.$touched && myForm.myName.$invalid"></span>
-      <div *ngIf='userNameRef.errors && userNameRef.touched' class="alert alert-danger">
-        <div [hidden]='!userNameRef.errors.required'> Enter Passenger Name </div>
-        <div *ngIf='userNameRef.errors.pattern'> Please Enter The Name properly</div>
-  
-    </div>
-    </div>
-      <div class="form-group">
-      <label for="userId">UserId:</label>
-      <input required type="text" #userIdRef='ngModel'[(ngModel)]="user.userId"  placeholder="Enterid" name="userId" ngModel class="form-control" id="userId" >
-      <div *ngIf='userIdRef.errors && userIdRef.touched' class="alert alert-danger">
 
-        <div [hidden]='!userIdRef.errors.required'> enter user id </div>
-  
-    </div>
-      </div>
-    
-    <div class="form-group">
-      <label for="noofSeats">Number of Seats</label>
-      <input  required [(ngModel)]="user.noofSeats" #seatsRef='ngModel' placeholder="noofSeats" name="noofSeats" pattern="[0-4]" ngModel  class="form-control" id="noofSeats">
-      <div *ngIf='seatsRef.errors && seatsRef.touched' class="alert alert-danger">
+</div>
 
-        <div [hidden]='!seatsRef.errors.required'> enter no .of seats </div>
-  
-        <div *ngIf='seatsRef.errors.pattern'>should select only 4 seats at a time</div>
-  
+
+<div>
+  <form>
+    <div class="col-md-5 offset-3">
+
+      <form>
+        <div class="form-group">
+          <br>
+          <h6> Confirm your appointment by entering your Phone number</h6>
+          <br>
+          <label for="passengerName">Passenger Name</label>
+          <input required type="text" #userNameRef='ngModel' pattern="^[A-Za-z0-9_-]{4,15}$" placeholder="EnterName"
+            [(ngModel)]="user.passengerName" name="passengerName" required ngModel class="form-control "
+            id="passengerName">
+          <span ng-show="ngForm.passengerName.$touched && myForm.myName.$invalid"></span>
+          <div *ngIf='userNameRef.errors && userNameRef.touched' class="alert alert-danger">
+            <div [hidden]='!userNameRef.errors.required'> Enter Passenger Name </div>
+            <div *ngIf='userNameRef.errors.pattern'> Please Enter The Name properly</div>
+          </div>
+
+          <label for="userId">UserId:</label>
+          <input required type="text" #userIdRef='ngModel' [(ngModel)]="user.userId" placeholder="Enterid" name="userId"
+            ngModel class="form-control" id="userId">
+          <div *ngIf='userIdRef.errors && userIdRef.touched' class="alert alert-danger">
+
+            <div [hidden]='!userIdRef.errors.required'> enter user id </div>
+
+          </div>
+
+          <label for="noofSeats">Number of Seats</label>
+          <input required [(ngModel)]="user.noofSeats" #seatsRef='ngModel' placeholder="noofSeats" name="noofSeats"
+            pattern="[0-4]" ngModel class="form-control" id="noofSeats">
+          <div *ngIf='seatsRef.errors && seatsRef.touched' class="alert alert-danger">
+
+            <div [hidden]='!seatsRef.errors.required'> enter no .of seats </div>
+
+            <div *ngIf='seatsRef.errors.pattern'>should select only 4 seats at a time</div>
+
+          </div>
+
+        </div>
+
+        <button class="center" class="btn btn-success" (click)="bookNow()">Confirm</button>
+      </form>
+
     </div>
-    </div>
-  
-    <button [disabled]="userForm.invalid" class="btn btn-success" (click)="bookNow()">Confirm</button>
- 
   </form>
 </div>
-</div>
-</div>
-<div class=" row justify-content-center align-items-center">
- 
- </div>
- 
 
+<div *ngIf="check" align="center">
+  <h2>Booking Details</h2><br>
+  <h2>Booking ID : {{bookings.bookingId}}</h2>
+  <h2>Passenger Name : {{bookings.passengerName}}</h2>
+  <h2>User ID : {{bookings.userId}}</h2>
+  <h2>No of Seats booked: {{bookings.noofSeats}}</h2>
+</div>
